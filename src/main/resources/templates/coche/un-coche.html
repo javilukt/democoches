@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+</head>
+<body>
+<h1 th:text="${tituloH1}"></h1>
+<a th:href="@{/home}">Home</a>
+<a th:href="@{/coche/all}">Listado completo</a>
+<p th:if="${coche == null}">No hay coches que mostrar</p>
+<ul th:if="${coche != null}">
+	<li th:text="${'Id: ' + coche.getId()}"></li>
+	<li th:text="${'Marca: ' + coche.getMarca()}">Marca: ford</li>
+	<li th:text="${'Modelo: ' + coche.getModelo()}">Modelo: focus</li>
+	<li th:text="${'Color: ' + coche.getColor()}">Color: verde</li>
+	<li th:text="${'Año de fabricación: ' + coche.getFabricadoEn()}">Año de fabricación: 2006</li>
+</ul>
+
+</body>
+</html>

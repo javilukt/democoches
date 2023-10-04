@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+
+	<style>
+		table {
+			border-collapse: collapse;
+			margin: 0 auto;
+			/* Margen automático para centrar horizontalmente */
+
+		}
+
+		td,
+		th {
+			border: 1px solid darkgray;
+			padding: 8px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<h1 th:text="${tituloH1}"></h1>
+<p th:if="${listaCoches.size() == 0}">No hay coches que mostrar en la lista</p>
+<a th:href="@{/home}">Home</a>
+<a th:href="@{/coche/all}">Listado completo</a>
+<table th:if="${listaCoches.size() != 0}">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Marca</td>
+			<td>Modelo</td>
+			<td>Color</td>
+			<td>Año fabricación</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="coche : ${listaCoches}">		
+			<td>
+				<a th:text="${coche.id}"
+				th:href="@{/coche} + '?id=' + ${coche.id}"></a>				
+			</td>
+			<td>
+				<a th:text="${coche.marca}"
+				th:href="@{/coche/lista} + '?marca=' + ${coche.marca}"></a>				
+			</td>
+			
+			<td th:text="${coche.modelo}"></td>
+			<td th:text="${coche.color}"></td>
+			<td th:text="${coche.fabricadoEn}"></td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>
